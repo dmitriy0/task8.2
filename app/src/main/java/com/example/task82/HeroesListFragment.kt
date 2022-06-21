@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.task82.databinding.FragmentHeroesListBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.OkHttpClient
@@ -27,6 +28,7 @@ class HeroesListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var editor: SharedPreferences.Editor
+    private lateinit var binding: FragmentHeroesListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +37,13 @@ class HeroesListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_heroes_list, container, false)
+    ): View {
+        binding = FragmentHeroesListBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val about = view.findViewById<Button>(R.id.buttonAbout)
         about.setOnClickListener {
@@ -62,7 +69,6 @@ class HeroesListFragment : Fragment() {
             requestToApi()
             Toast.makeText(requireContext(), "fromApi", Toast.LENGTH_LONG).show()
         }
-        return view
     }
 
     private fun requestToApi() {

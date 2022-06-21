@@ -6,26 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.example.task82.databinding.FragmentAboutBinding
 
 class FragmentAbout : Fragment() {
 
+    private lateinit var binding: FragmentAboutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_about, container, false)
+    ): View {
+        binding = FragmentAboutBinding.inflate(inflater)
 
-        val heroesList = view.findViewById<Button>(R.id.buttonHeroes)
+        return binding.root
+    }
 
-        heroesList.setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonHeroes.setOnClickListener {
             App.INSTANCE.router.backTo(Screens.heroesList())
         }
-        return view
     }
 }

@@ -8,30 +8,39 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.task82.databinding.FragmentHeroInfoBinding
 import com.squareup.picasso.Picasso
 
 
-class HeroInfoFragment(val bundle: Bundle) : Fragment() {
+class HeroInfoFragment(private val bundle: Bundle) : Fragment() {
+
+    private lateinit var binding: FragmentHeroInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_hero_info, container, false)
+    ): View {
+        binding = FragmentHeroInfoBinding.inflate(inflater)
+        return binding.root
+    }
 
-        view.findViewById<TextView>(R.id.name).text = bundle.getString("name")
-        view.findViewById<TextView>(R.id.height).text = bundle.getString("height")
-        view.findViewById<TextView>(R.id.weight).text = bundle.getString("weight")
-        view.findViewById<TextView>(R.id.gender).text = "Gender: ${bundle.getString("gender")}"
-        view.findViewById<TextView>(R.id.eye_color).text = "Eye color: ${bundle.getString("eyeColor")}"
-        view.findViewById<TextView>(R.id.hair_color).text = "Hair color: ${bundle.getString("hairColor")}"
+    @SuppressLint("SetTextI18n")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            name.text = bundle.getString("name")
+            height.text = bundle.getString("height")
+            weight.text = bundle.getString("weight")
+            gender.text = "Gender: ${bundle.getString("gender")}"
+            eyeColor.text = "Eye color: ${bundle.getString("eyeColor")}"
+            hairColor.text = "Hair color: ${bundle.getString("hairColor")}"
+            Picasso.get().load(bundle.getString("imageUrl"))
+                .into(image)
+        }
 
-        Picasso.get().load(bundle.getString("imageUrl")).into(view.findViewById<ImageView>(R.id.image))
-        return view
     }
 }

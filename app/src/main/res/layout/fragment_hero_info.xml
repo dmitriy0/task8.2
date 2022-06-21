@@ -71,7 +71,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/eye_color"
+                android:id="@+id/eyeColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -82,13 +82,13 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/hair_color"
+                android:id="@+id/hairColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:textColor="#000"
-                app:layout_constraintTop_toBottomOf="@id/eye_color"
+                app:layout_constraintTop_toBottomOf="@id/eyeColor"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="TextView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
