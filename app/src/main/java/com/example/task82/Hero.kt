@@ -1,5 +1,6 @@
 package com.example.task82
 
+
 data class Hero(
     val name: String,
     val images: Image,

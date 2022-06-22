@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import com.example.task82.databinding.FragmentAboutBinding
 
 class FragmentAbout : Fragment() {
@@ -21,7 +20,6 @@ class FragmentAbout : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAboutBinding.inflate(inflater)
-
         return binding.root
     }
 

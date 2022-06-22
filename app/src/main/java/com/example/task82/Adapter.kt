@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.task82.databinding.RecyclerviewItemBinding
 import com.squareup.picasso.Picasso
 
-class Adapter(private val data: ArrayList<Hero>, private val activity: Activity) :
+class Adapter(private val data: ArrayList<Hero>) :
     RecyclerView.Adapter<Adapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = RecyclerviewItemBinding.bind(view)
